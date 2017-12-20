@@ -1,0 +1,408 @@
+
+body, h2, ul, li, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.app {
+  font-family: sans-serif;
+  overflow: auto;
+}
+
+.lefts {
+  transform: translateX(80%);
+}
+/*header start*/
+header {
+  position: relative;
+  background-color: #00BBD2;
+  color: #fff;
+  top: 0;
+}
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-btn {
+  position: fixed;
+  padding: 10px;
+  z-index: 1;
+  transition: .5;
+}
+
+.sidebar-btn .iconfont {
+  display: block;
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 70px;
+  font-size: 30px;
+  color: #eee;
+}
+
+.sidebar-btn .iconfont:hover {
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 10px 100px;
+}
+
+.title .city {
+  height: 70px;
+  line-height: 70px;
+  font-size: 40px;
+}
+
+.title .title-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*height: 70px;*/
+  font-size: 20px;
+}
+
+.title-right span {
+  color: #ffff03;
+  font-size: 35px;
+}
+.today-weather {
+  flex: 1;
+  height:150px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.today-weather .temp {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.today-weather .img-box {
+  /*background-color: grey;*/
+}
+.img-box img {
+  width:150px;
+}
+
+.today-weather .temperature-box {
+  /*background-color: brown;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.temperature-box .description {
+  display:flex;
+  justify-content: space-around;
+}
+.temp-ball {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: .5s;
+}
+
+.temp-ball .ball {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: aqua;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+}
+
+.temp-ball .clock {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  background-color: #ffeb3b;
+}
+
+.temp-ball .day {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  background-color: red;
+}
+
+.temp-ball .clock:hover {
+  cursor: pointer;
+}
+
+.ball .icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+}
+
+.ball .iconfont {
+  color:#2196f3;
+}
+.clock .iconfont {
+  color: brown;
+  font-size: 40px;
+}
+/*header end*/
+
+
+/*aside start*/
+
+aside {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -80%;
+  width: 80%;
+  background-color: rgba(255, 255, 255, .8);
+  transition: .5s;
+  opacity: 0;
+}
+aside.show {
+  opacity: 1;
+}
+aside.zIndex {
+  z-index: 2;
+}
+.bg-aside {
+  height: 30vh;
+  background-image: url('../images/1.png');
+  background-size: 100% 100%;
+}
+
+.citys {
+  border-bottom: 1px solid #9e9e9e;
+  max-height: 350px;
+}
+
+.citys li {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  background: #ccc;
+  padding-left: 30px;
+  font-size: 18px;
+}
+.citys li.active {
+  background-color: #ffeb3b;
+  color: #fff;
+}
+.citys .icon-temp {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: blue;
+  margin-right: 20px;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  background: pink;
+  padding-left: 30px;
+  font-size: 18px;
+}
+
+.add-btn .icon-add {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: blue;
+  margin-right: 20px;
+}
+
+.add-citys {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: pink;
+  transition: .5s;
+  z-index: 2;
+  opacity: 1;
+  /*display: block;*/
+}
+.add-citys.active {
+  /*display: none;*/
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.add-citys .search {
+  background-color: blue;
+  height: 60px;
+  margin: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.add-citys .city-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  top: 70px;
+  overflow: auto;
+}
+.add-citys li {
+  position: relative;
+  height:100px;
+  text-align: center;
+  background-color: #ccc;
+  border-radius: 5px;
+  margin: 25px;
+}
+.add-citys li.active {
+  background-color: #ffeb3b;
+}
+.add-citys .city-name {
+  line-height: 80px;
+}
+.add-citys .delete {
+  position: absolute;
+  top:-10px;
+  right: -10px;
+  width:30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.add-citys .returnPrev {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: 30px;
+}
+.returnPrev .iconfont {
+  font-size: 20px;
+  color:#fff;
+}
+
+/*aside end*/
+
+
+/*dark start*/
+
+.dark {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  transition: .5s;
+}
+
+
+/*dark end*/
+
+
+/*main start*/
+
+main {
+  padding-top: 30px;
+}
+.fiveday, .moreday {
+  display: none;
+}
+
+.fiveday h3 {
+  .height: 60px;
+  line-height: 60px;
+  background: yellow;
+  padding:0 10px;
+  color: #555;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.three-hours li, .moreday li {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.19);
+  font-size: 15px;
+  padding:10px;
+}
+
+.left-temp {
+  flex:1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left-temp .icon-temp {
+  width:35px;
+  height:35px;
+  background-color: brown;
+}
+.left-temp .desc {
+  margin: 3px 0;
+}
+.right-time {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.moreday {
+  height:100%;
+}
+/*main end*/
+
+
+/*public style start*/
+
+.box-shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.51), 0 2px 2px rgba(0, 0, 0, 0.6), 0 3px 3px rgba(0, 0, 0, 0.32);
+}
+
+.show {
+  left: 0;
+}
+
+.display {
+  display: block;
+}
+
+
+/*public style end*/
